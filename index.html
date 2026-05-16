@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rocket Client</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080404;
+    --bg2: #0f0f0f;
+    --bg3: #141414;
+    --border: #1a1a1a;
+    --border2: #222222;
+    --text: #ffffff;
+    --text-dim: #555555;
+    --text-muted: #2e2e2e;
+    --accent: #ffffff;
+    --font: 'JetBrains Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 56px;
+    background: rgba(8,4,4,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo svg { opacity: 0.85; }
+
+  .nav-logo span {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    opacity: 0.88;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    transition: color 0.15s, background 0.15s;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links a:hover { color: var(--text); background: var(--bg2); }
+  .nav-links a.active { color: var(--text); }
+
+  .nav-store-btn {
+    font-size: 12px;
+    font-family: var(--font);
+    color: #000;
+    background: #fff;
+    border: none;
+    padding: 7px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: opacity 0.15s;
+    text-decoration: none;
+  }
+
+  .nav-store-btn:hover { opacity: 0.85; }
+
+  /* SECTIONS */
+  section { padding: 100px 40px 60px; max-width: 1100px; margin: 0 auto; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 56px;
+    max-width: 100%;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse 60% 40% at 50% 40%, rgba(255,255,255,0.03) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: var(--text-dim);
+    border: 0.5px solid var(--border2);
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 32px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero-badge span { width: 5px; height: 5px; border-radius: 50%; background: #fff; opacity: 0.4; }
+
+  .hero h1 {
+    font-size: clamp(42px, 7vw, 80px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.0;
+    opacity: 0.9;
+    margin-bottom: 16px;
+  }
+
+  .hero p {
+    font-size: 13px;
+    color: var(--text-dim);
+    max-width: 440px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
+    background: #fff;
+    border: none;
+    padding: 13px 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.15s;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-primary:hover { opacity: 0.85; }
+
+  .btn-secondary {
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-dim);
+    background: transparent;
+    border: 0.5px solid var(--border2);
+    padding: 13px 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.15s, border-color 0.15s;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-secondary:hover { color: var(--text); border-color: #444; }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 80px;
+    border-top: 0.5px solid var(--border);
+    padding-top: 40px;
+    width: 100%;
+    max-width: 500px;
+    justify-content: center;
+  }
+
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 600; opacity: 0.8; }
+  .stat-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+
+  /* DOWNLOAD */
+  .section-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    opacity: 0.88;
+    margin-bottom: 12px;
+  }
+
+  .section-sub {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 48px;
+    max-width: 420px;
+  }
+
+  .download-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .download-card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 28px;
+    transition: border-color 0.2s;
+  }
+
+  .download-card:hover { border-color: var(--border2); }
+
+  .download-card-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--bg3);
+    border: 0.5px solid var(--border2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .download-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.88;
+    margin-bottom: 6px;
+  }
+
+  .download-card p {
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font);
+    font-size: 11px;
+    font-weight: 600;
+    color: #000;
+    background: #fff;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.15s;
+    letter-spacing: 0.02em;
+  }
+
+  .download-btn:hover { opacity: 0.85; }
+
+  .download-btn.secondary {
+    background: transparent;
+    color: var(--text-dim);
+    border: 0.5px solid var(--border2);
+  }
+
+  .download-btn.secondary:hover { color: var(--text); }
+
+  .version-tag {
+    display: inline-block;
+    font-size: 9px;
+    color: var(--text-muted);
+    border: 0.5px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* STORE */
+  .store-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .store-card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    transition: border-color 0.2s;
+  }
+
+  .store-card:hover { border-color: var(--border2); }
+
+  .store-card-badge {
+    font-size: 9px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  .store-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.85;
+    margin-bottom: 6px;
+  }
+
+  .store-card p {
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .store-price {
+    font-size: 22px;
+    font-weight: 700;
+    opacity: 0.8;
+    margin-bottom: 16px;
+  }
+
+  .store-price span {
+    font-size: 11px;
+    color: var(--text-dim);
+    font-weight: 400;
+  }
+
+  .coming-soon-tag {
+    display: inline-block;
+    font-size: 9px;
+    color: var(--text-muted);
+    border: 0.5px solid var(--border2);
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  footer p { font-size: 11px; color: var(--text-muted); }
+
+  footer a {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  footer a:hover { color: var(--text); }
+
+  .footer-links { display: flex; gap: 20px; }
+
+  /* TABS */
+  .tab-bar {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 40px;
+    border-bottom: 0.5px solid var(--border);
+    padding-bottom: 0;
+  }
+
+  .tab {
+    font-family: var(--font);
+    font-size: 12px;
+    color: var(--text-dim);
+    background: transparent;
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+    border-bottom: 1.5px solid transparent;
+    margin-bottom: -0.5px;
+    transition: color 0.15s;
+    letter-spacing: 0.02em;
+  }
+
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--text); border-bottom-color: #fff; }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M13.13 22.19L11.5 18.36C13.07 17.78 14.54 17 15.9 16.09L13.13 22.19M5.64 12.5L1.81 10.87L7.91 8.1C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39C21.61 2.39 16.66 .269 11 5.93C8.81 8.12 7.5 10.53 6.65 12.64C6.37 13.39 6.56 14.21 7.11 14.77L9.24 16.89C9.79 17.45 10.61 17.63 11.36 17.36C13.5 16.5 15.88 15.19 18.07 13C23.73 7.34 21.61 2.39 21.61 2.39M14.54 9.46C13.76 8.68 13.76 7.41 14.54 6.63S16.59 5.85 17.37 6.63C18.14 7.41 18.15 8.68 17.37 9.46C16.59 10.24 15.32 10.24 14.54 9.46M8.88 16.53L7.47 15.12L8.88 16.53M6.24 22L9.88 18.36C9.54 18.27 9.21 18.12 8.91 17.91L5.15 21.67L6.24 22M2 22L5.84 18.16C5.63 17.86 5.48 17.53 5.39 17.19L1.75 20.83L2 22M2.22 19.04L6 15.26C5.99 14.71 6.19 14.16 6.58 13.77L7.47 12.88L11.09 16.5C10.7 16.89 10.15 17.09 9.6 17.08L5.82 20.86L2.22 19.04Z"/></svg>
+    <span>Rocket Client</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#download">Download</a></li>
+    <li><a href="#store">Store</a></li>
+    <li><a href="https://github.com/Pernoise/Rocket-client" target="_blank">GitHub</a></li>
+    <li><a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a></li>
+  </ul>
+  <a href="#store" class="nav-store-btn">Store</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="home">
+  <div class="hero-badge"><span></span> Open Source · Alpha v0.1</div>
+  <h1>Rocket Client</h1>
+  <p>A performance-focused Minecraft client built for Linux. Clean, fast, no bloat.</p>
+  <div class="hero-btns">
+    <a href="#download" class="btn-primary">Download</a>
+    <a href="https://github.com/Pernoise/Rocket-client" target="_blank" class="btn-secondary">View Source</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">Alpha v0.1</div>
+      <div class="stat-label">Current Build</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1.16+</div>
+      <div class="stat-label">Supported</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Alpha</div>
+      <div class="stat-label">Stage</div>
+    </div>
+  </div>
+</div>
+
+<!-- DOWNLOAD -->
+<section id="download">
+  <p class="section-label">Download</p>
+  <h2 class="section-title">Get Rocket Client</h2>
+  <p class="section-sub">Download the latest build for your platform. Linux is the primary supported platform.</p>
+
+  <div class="tab-bar">
+    <button class="tab active" onclick="switchTab('stable', this)">Stable</button>
+    <button class="tab" onclick="switchTab('source', this)">Source Code</button>
+  </div>
+
+  <div id="tab-stable" class="tab-content active">
+    <div class="download-grid">
+      <div class="download-card">
+        <div class="download-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="version-tag">v0.1 · Latest</div>
+        <h3>Linux — AppImage</h3>
+        <p>Universal Linux build. Works on any distro. No install required — just download and run.</p>
+        <a href="https://github.com/Pernoise/Rocket-client/releases" target="_blank" class="download-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download .AppImage
+        </a>
+      </div>
+      <div class="download-card">
+        <div class="download-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="version-tag">v0.1 · Latest</div>
+        <h3>Windows — Installer</h3>
+        <p>Windows build coming soon. Primary development is focused on Linux first.</p>
+        <a href="#" class="download-btn secondary">Coming Soon</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-source" class="tab-content">
+    <div class="download-grid">
+      <div class="download-card">
+        <div class="download-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        </div>
+        <div class="version-tag">Open Source</div>
+        <h3>GitHub Repository</h3>
+        <p>Full source code available on GitHub. MIT licensed — fork it, study it, contribute to it.</p>
+        <a href="https://github.com/Pernoise/Rocket-client" target="_blank" class="download-btn">View on GitHub</a>
+      </div>
+      <div class="download-card">
+        <div class="download-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <div class="version-tag">Source</div>
+        <h3>Download ZIP</h3>
+        <p>Download the source code as a ZIP archive directly from GitHub releases.</p>
+        <a href="https://github.com/Pernoise/Rocket-client/archive/refs/heads/main.zip" class="download-btn">Download .zip</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORE -->
+<section id="store">
+  <p class="section-label">Store</p>
+  <h2 class="section-title">Support Rocket Client</h2>
+  <p class="section-sub">Cosmetics and perks coming soon. The client itself will always be free and open source.</p>
+
+  <div class="store-grid">
+    <div class="store-card">
+      <div class="store-card-badge">Cosmetic</div>
+      <h3>Custom Cape</h3>
+      <p>Show off a unique cape in-game. Visible to other Rocket Client users.</p>
+      <div class="store-price">$4.99 <span>/ one-time</span></div>
+      <span class="coming-soon-tag">Coming Soon</span>
+    </div>
+    <div class="store-card">
+      <div class="store-card-badge">Supporter</div>
+      <h3>Supporter Badge</h3>
+      <p>A badge on your profile in the Rocket Client community. Thank you for supporting.</p>
+      <div class="store-price">$2.99 <span>/ one-time</span></div>
+      <span class="coming-soon-tag">Coming Soon</span>
+    </div>
+    <div class="store-card">
+      <div class="store-card-badge">Bundle</div>
+      <h3>Founder Pack</h3>
+      <p>Cape + Badge + Founder role in Discord. Limited to early supporters only.</p>
+      <div class="store-price">$6.99 <span>/ one-time</span></div>
+      <span class="coming-soon-tag">Coming Soon</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Rocket Client — Open Source</p>
+  <div class="footer-links">
+    <a href="https://github.com/Pernoise/Rocket-client" target="_blank">GitHub</a>
+    <a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a>
+    <a href="#download">Download</a>
+    <a href="#store">Store</a>
+  </div>
+</footer>
+
+<script>
+  function switchTab(name, el) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    el.classList.add('active');
+  }
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
