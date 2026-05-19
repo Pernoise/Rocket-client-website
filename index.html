@@ -456,7 +456,6 @@
     <li><a href="#home" class="active">Home</a></li>
     <li><a href="#download">Download</a></li>
     <li><a href="#store">Store</a></li>
-    <li><a href="https://github.com/Pernoise/Rocket-client" target="_blank">GitHub</a></li>
     <li><a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a></li>
   </ul>
   <a href="#store" class="nav-store-btn">Store</a>
@@ -464,24 +463,23 @@
 
 <!-- HERO -->
 <div class="hero" id="home">
-  <div class="hero-badge"><span></span> Open Source · Alpha v0.1</div>
+  <div class="hero-badge"><span></span> Open Source · Beta v0.1</div>
   <h1>Rocket Client</h1>
   <p>A performance-focused Minecraft client built for Linux. Clean, fast, no bloat.</p>
   <div class="hero-btns">
     <a href="#download" class="btn-primary">Download</a>
-    <a href="https://github.com/Pernoise/Rocket-client" target="_blank" class="btn-secondary">View Source</a>
   </div>
   <div class="hero-stats">
     <div class="stat">
-      <div class="stat-num">Alpha v0.1</div>
+      <div class="stat-num">Beta v0.1</div>
       <div class="stat-label">Current Build</div>
     </div>
     <div class="stat">
-      <div class="stat-num">1.16+</div>
+      <div class="stat-num">1.19+</div>
       <div class="stat-label">Supported</div>
     </div>
     <div class="stat">
-      <div class="stat-num">Alpha</div>
+      <div class="stat-num">Beta</div>
       <div class="stat-label">Stage</div>
     </div>
   </div>
@@ -493,13 +491,7 @@
   <h2 class="section-title">Get Rocket Client</h2>
   <p class="section-sub">Download the latest build for your platform. Linux is the primary supported platform.</p>
 
-  <div class="tab-bar">
-    <button class="tab active" onclick="switchTab('stable', this)">Stable</button>
-    <button class="tab" onclick="switchTab('source', this)">Source Code</button>
-  </div>
-
-  <div id="tab-stable" class="tab-content active">
-    <div class="download-grid">
+  <div class="download-grid">
       <div class="download-card">
         <div class="download-card-icon">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -507,7 +499,7 @@
         <div class="version-tag">v0.1 · Latest</div>
         <h3>Linux — AppImage</h3>
         <p>Universal Linux build. Works on any distro. No install required — just download and run.</p>
-        <a href="https://github.com/Pernoise/Rocket-client/releases" target="_blank" class="download-btn">
+        <a href="#" onclick="return false;" class="download-btn">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download .AppImage
         </a>
@@ -518,41 +510,20 @@
         </div>
         <div class="version-tag">v0.1 · Latest</div>
         <h3>Windows — Installer</h3>
-        <p>Windows build coming soon. Primary development is focused on Linux first.</p>
-        <a href="#" class="download-btn secondary">Coming Soon</a>
+        <p>Windows build. Compatible with Windows 10 and later.</p>
+        <a href="#" onclick="return false;" class="download-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download .exe
+        </a>
       </div>
     </div>
-  </div>
-
-  <div id="tab-source" class="tab-content">
-    <div class="download-grid">
-      <div class="download-card">
-        <div class="download-card-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-        </div>
-        <div class="version-tag">Open Source</div>
-        <h3>GitHub Repository</h3>
-        <p>Full source code available on GitHub. MIT licensed — fork it, study it, contribute to it.</p>
-        <a href="https://github.com/Pernoise/Rocket-client" target="_blank" class="download-btn">View on GitHub</a>
-      </div>
-      <div class="download-card">
-        <div class="download-card-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        </div>
-        <div class="version-tag">Source</div>
-        <h3>Download ZIP</h3>
-        <p>Download the source code as a ZIP archive directly from GitHub releases.</p>
-        <a href="https://github.com/Pernoise/Rocket-client/archive/refs/heads/main.zip" class="download-btn">Download .zip</a>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- STORE -->
 <section id="store">
   <p class="section-label">Store</p>
   <h2 class="section-title">Support Rocket Client</h2>
-  <p class="section-sub">Cosmetics and perks coming soon. The client itself will always be free and open source.</p>
+  <p class="section-sub">Cosmetics and perks coming soon. The client itself will always be free and publicly viewable.</p>
 
   <div class="store-grid">
     <div class="store-card">
@@ -581,9 +552,8 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 Rocket Client — Open Source</p>
+  <p>© 2026 Rocket Client — Publicly Viewable</p>
   <div class="footer-links">
-    <a href="https://github.com/Pernoise/Rocket-client" target="_blank">GitHub</a>
     <a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a>
     <a href="#download">Download</a>
     <a href="#store">Store</a>
