@@ -84,23 +84,6 @@
   .nav-links a:hover { color: var(--text); background: var(--bg2); }
   .nav-links a.active { color: var(--text); }
 
-  .nav-store-btn {
-    font-size: 12px;
-    font-family: var(--font);
-    color: #000;
-    background: #fff;
-    border: none;
-    padding: 7px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    transition: opacity 0.15s;
-    text-decoration: none;
-  }
-
-  .nav-store-btn:hover { opacity: 0.85; }
-
   /* SECTIONS */
   section { padding: 100px 40px 60px; max-width: 1100px; margin: 0 auto; }
 
@@ -322,69 +305,6 @@
     text-transform: uppercase;
   }
 
-  /* STORE */
-  .store-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-  }
-
-  .store-card {
-    background: var(--bg2);
-    border: 0.5px solid var(--border);
-    border-radius: 10px;
-    padding: 24px;
-    transition: border-color 0.2s;
-  }
-
-  .store-card:hover { border-color: var(--border2); }
-
-  .store-card-badge {
-    font-size: 9px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 12px;
-  }
-
-  .store-card h3 {
-    font-size: 14px;
-    font-weight: 600;
-    opacity: 0.85;
-    margin-bottom: 6px;
-  }
-
-  .store-card p {
-    font-size: 11px;
-    color: var(--text-dim);
-    line-height: 1.6;
-    margin-bottom: 20px;
-  }
-
-  .store-price {
-    font-size: 22px;
-    font-weight: 700;
-    opacity: 0.8;
-    margin-bottom: 16px;
-  }
-
-  .store-price span {
-    font-size: 11px;
-    color: var(--text-dim);
-    font-weight: 400;
-  }
-
-  .coming-soon-tag {
-    display: inline-block;
-    font-size: 9px;
-    color: var(--text-muted);
-    border: 0.5px solid var(--border2);
-    padding: 4px 10px;
-    border-radius: 4px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
   /* FOOTER */
   footer {
     border-top: 0.5px solid var(--border);
@@ -409,35 +329,6 @@
 
   .footer-links { display: flex; gap: 20px; }
 
-  /* TABS */
-  .tab-bar {
-    display: flex;
-    gap: 2px;
-    margin-bottom: 40px;
-    border-bottom: 0.5px solid var(--border);
-    padding-bottom: 0;
-  }
-
-  .tab {
-    font-family: var(--font);
-    font-size: 12px;
-    color: var(--text-dim);
-    background: transparent;
-    border: none;
-    padding: 10px 16px;
-    cursor: pointer;
-    border-bottom: 1.5px solid transparent;
-    margin-bottom: -0.5px;
-    transition: color 0.15s;
-    letter-spacing: 0.02em;
-  }
-
-  .tab:hover { color: var(--text); }
-  .tab.active { color: var(--text); border-bottom-color: #fff; }
-
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
-
   /* SCROLLBAR */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
@@ -455,15 +346,13 @@
   <ul class="nav-links">
     <li><a href="#home" class="active">Home</a></li>
     <li><a href="#download">Download</a></li>
-    <li><a href="#store">Store</a></li>
     <li><a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a></li>
   </ul>
-  <a href="#store" class="nav-store-btn">Store</a>
 </nav>
 
 <!-- HERO -->
 <div class="hero" id="home">
-  <div class="hero-badge"><span></span> Open Source · Beta v0.1</div>
+  <div class="hero-badge"><span></span> Open Source · Beta v0.5</div>
   <h1>Rocket Client</h1>
   <p>A performance-focused Minecraft client built for Linux. Clean, fast, no bloat.</p>
   <div class="hero-btns">
@@ -471,7 +360,7 @@
   </div>
   <div class="hero-stats">
     <div class="stat">
-      <div class="stat-num">Beta v0.1</div>
+      <div class="stat-num">Beta v0.5</div>
       <div class="stat-label">Current Build</div>
     </div>
     <div class="stat">
@@ -496,7 +385,7 @@
         <div class="download-card-icon">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
         </div>
-        <div class="version-tag">v0.1 · Latest</div>
+        <div class="version-tag">v0.5 · Latest</div>
         <h3>Linux — AppImage</h3>
         <p>Universal Linux build. Works on any distro. No install required — just download and run.</p>
         <a href="#" onclick="return false;" class="download-btn">
@@ -508,7 +397,7 @@
         <div class="download-card-icon">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
         </div>
-        <div class="version-tag">v0.1 · Latest</div>
+        <div class="version-tag">v0.5 · Latest</div>
         <h3>Windows — Installer</h3>
         <p>Windows build. Compatible with Windows 10 and later.</p>
         <a href="#" onclick="return false;" class="download-btn">
@@ -519,55 +408,16 @@
     </div>
 </section>
 
-<!-- STORE -->
-<section id="store">
-  <p class="section-label">Store</p>
-  <h2 class="section-title">Support Rocket Client</h2>
-  <p class="section-sub">Cosmetics and perks coming soon. The client itself will always be free and publicly viewable.</p>
-
-  <div class="store-grid">
-    <div class="store-card">
-      <div class="store-card-badge">Cosmetic</div>
-      <h3>Custom Cape</h3>
-      <p>Show off a unique cape in-game. Visible to other Rocket Client users.</p>
-      <div class="store-price">$4.99 <span>/ one-time</span></div>
-      <span class="coming-soon-tag">Coming Soon</span>
-    </div>
-    <div class="store-card">
-      <div class="store-card-badge">Supporter</div>
-      <h3>Supporter Badge</h3>
-      <p>A badge on your profile in the Rocket Client community. Thank you for supporting.</p>
-      <div class="store-price">$2.99 <span>/ one-time</span></div>
-      <span class="coming-soon-tag">Coming Soon</span>
-    </div>
-    <div class="store-card">
-      <div class="store-card-badge">Bundle</div>
-      <h3>Founder Pack</h3>
-      <p>Cape + Badge + Founder role in Discord. Limited to early supporters only.</p>
-      <div class="store-price">$6.99 <span>/ one-time</span></div>
-      <span class="coming-soon-tag">Coming Soon</span>
-    </div>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <p>© 2026 Rocket Client — Publicly Viewable</p>
   <div class="footer-links">
     <a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a>
     <a href="#download">Download</a>
-    <a href="#store">Store</a>
   </div>
 </footer>
 
 <script>
-  function switchTab(name, el) {
-    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('tab-' + name).classList.add('active');
-    el.classList.add('active');
-  }
-
   // Active nav link on scroll
   const sections = document.querySelectorAll('[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
