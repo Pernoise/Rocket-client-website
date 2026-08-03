@@ -308,10 +308,12 @@
   /* SCREENSHOTS */
   .shots-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     align-items: start;
   }
+
+  .shot-card-wide { grid-column: 1 / -1; }
 
   .shot-card {
     background: var(--bg2);
@@ -504,7 +506,7 @@
   <p class="section-sub">A few shots of the launcher, settings, and login flow.</p>
 
   <div class="shots-grid">
-    <figure class="shot-card">
+    <figure class="shot-card shot-card-wide">
       <img src="assets/launcher.png" alt="Rocket Client launcher home screen">
       <figcaption>launcher.png</figcaption>
     </figure>
@@ -546,13 +548,6 @@
           <div>
             <div class="about-link-label">Discord</div>
             <div class="about-link-sub">add me</div>
-          </div>
-          <span class="about-link-arrow">→</span>
-        </a>
-        <a href="https://rocketclient.rocketclient.abrdns.com" target="_blank" class="about-link">
-          <div>
-            <div class="about-link-label">Website</div>
-            <div class="about-link-sub">rocketclient</div>
           </div>
           <span class="about-link-arrow">→</span>
         </a>
