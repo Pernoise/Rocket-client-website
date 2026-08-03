@@ -16,8 +16,8 @@
     --border: #1a1a1a;
     --border2: #222222;
     --text: #ffffff;
-    --text-dim: #555555;
-    --text-muted: #2e2e2e;
+    --text-dim: #9a9a9a;
+    --text-muted: #6b6b6b;
     --accent: #ffffff;
     --font: 'JetBrains Mono', monospace;
   }
@@ -305,6 +305,93 @@
     text-transform: uppercase;
   }
 
+  /* SCREENSHOTS */
+  .shots-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    align-items: start;
+  }
+
+  .shot-card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 10px;
+    transition: border-color 0.2s;
+  }
+
+  .shot-card:hover { border-color: var(--border2); }
+
+  .shot-card img {
+    width: 100%;
+    display: block;
+    border-radius: 6px;
+    border: 0.5px solid var(--border);
+  }
+
+  .shot-card figcaption {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 10px 4px 2px;
+  }
+
+  @media (max-width: 720px) {
+    .shots-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .about-pfp {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 0.5px solid var(--border2);
+    object-fit: cover;
+  }
+
+  .about-body {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.9;
+    max-width: 560px;
+    margin-bottom: 28px;
+  }
+
+  .about-body b, .about-body strong { color: var(--text); font-weight: 600; }
+
+  .about-links { display: flex; flex-direction: column; gap: 10px; max-width: 420px; }
+
+  .about-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+
+  .about-link:hover { border-color: var(--border2); transform: translateX(3px); }
+
+  .about-link-label { font-size: 12px; color: var(--text); font-weight: 500; }
+  .about-link-sub { font-size: 11px; color: var(--text-muted); }
+  .about-link-arrow { font-size: 13px; color: var(--text-muted); }
+
+  @media (max-width: 640px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+
   /* FOOTER */
   footer {
     border-top: 0.5px solid var(--border);
@@ -346,6 +433,8 @@
   <ul class="nav-links">
     <li><a href="#home" class="active">Home</a></li>
     <li><a href="#download">Download</a></li>
+    <li><a href="#screenshots">Screenshots</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a></li>
   </ul>
 </nav>
@@ -406,6 +495,70 @@
         </a>
       </div>
     </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section id="screenshots">
+  <p class="section-label">Screenshots</p>
+  <h2 class="section-title">A look at the launcher</h2>
+  <p class="section-sub">A few shots of the launcher, settings, and login flow.</p>
+
+  <div class="shots-grid">
+    <figure class="shot-card">
+      <img src="assets/launcher.png" alt="Rocket Client launcher home screen">
+      <figcaption>launcher.png</figcaption>
+    </figure>
+    <figure class="shot-card">
+      <img src="assets/Settings.png" alt="Rocket Client settings screen">
+      <figcaption>Settings.png</figcaption>
+    </figure>
+    <figure class="shot-card">
+      <img src="assets/login.png" alt="Rocket Client login screen">
+      <figcaption>login.png</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">About</p>
+  <h2 class="section-title">Hi, I'm Pernoise 🇨🇦</h2>
+
+  <div class="about-grid">
+    <img src="assets/pfp.jpg" alt="Pernoise" class="about-pfp">
+    <div>
+      <p class="about-body">
+        Just a guy who likes building stuff and breaking things along the way.
+        Right now I'm putting most of my time into <b>Rocket Client</b>, a custom
+        Minecraft launcher I've been building from the ground up in <b>Java</b>
+        and <b>JavaFX</b>. Fabric and Forge support, automatic Java version
+        handling, clean dark UI, the whole deal.
+      </p>
+      <div class="about-links">
+        <a href="https://github.com/Pernoise/Rocket-client" target="_blank" class="about-link">
+          <div>
+            <div class="about-link-label">Repo</div>
+            <div class="about-link-sub">Rocket-client</div>
+          </div>
+          <span class="about-link-arrow">→</span>
+        </a>
+        <a href="https://discord.com/invite/urHfdFdsbh" target="_blank" class="about-link">
+          <div>
+            <div class="about-link-label">Discord</div>
+            <div class="about-link-sub">add me</div>
+          </div>
+          <span class="about-link-arrow">→</span>
+        </a>
+        <a href="https://rocketclient.rocketclient.abrdns.com" target="_blank" class="about-link">
+          <div>
+            <div class="about-link-label">Website</div>
+            <div class="about-link-sub">rocketclient</div>
+          </div>
+          <span class="about-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
