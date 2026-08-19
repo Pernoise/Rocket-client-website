@@ -421,7 +421,7 @@
   }
 
   .about-team-list li::before {
-    content: '\2022';
+    content: '-';
     position: absolute;
     left: 0;
     color: var(--text-muted);
@@ -479,6 +479,85 @@
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+  .faq-category {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 40px 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .faq-category:first-of-type { margin-top: 0; }
+
+  .faq-item {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .faq-item:hover { border-color: var(--border2); }
+
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    padding: 18px 20px;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+  }
+
+  .faq-question .icon {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    color: var(--text-muted);
+    transition: transform 0.2s;
+  }
+
+  .faq-item.open .faq-question .icon { transform: rotate(45deg); }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease, padding 0.25s ease;
+    padding: 0 20px;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 600px;
+    padding: 0 20px 20px;
+  }
+
+  .faq-answer p {
+    font-size: 12.5px;
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+
+  .faq-answer p:last-child { margin-bottom: 0; }
+  .faq-answer b, .faq-answer strong { color: var(--text); font-weight: 600; }
+  .faq-answer a { color: var(--text-dim); border-bottom: 0.5px solid var(--border2); text-decoration: none; }
+  .faq-answer a:hover { color: var(--text); }
+
+  .faq-answer ul { margin: 4px 0 4px 18px; }
+  .faq-answer li { font-size: 12.5px; color: var(--text-dim); line-height: 1.8; }
 
   /* ============ RESPONSIVE ============ */
 
@@ -577,15 +656,15 @@
     <li><a href="#home" class="active">Home</a></li>
     <li><a href="#download">Download</a></li>
     <li><a href="#screenshots">Screenshots</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="faq.html">FAQ</a></li>
     <li><a href="https://rocket-client-status.pages.dev" target="_blank">Server Status</a></li>
     <li><a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a></li>
   </ul>
 </nav>
 
 <div class="hero" id="home">
-  <div class="hero-badge"><span></span> Publicly Viewable &middot; Beta v0.9</div>
+  <div class="hero-badge"><span></span> Publicly Viewable - Beta v0.9</div>
   <h1>Rocket Client</h1>
   <p>A modern, lightweight Minecraft launcher built with love and... Hatred.</p>
   <div class="hero-btns">
@@ -597,7 +676,7 @@
       <div class="stat-label">Current Build</div>
     </div>
     <div class="stat">
-      <div class="stat-num">1.14+</div>
+      <div class="stat-num">1.8.9</div>
       <div class="stat-label">Supported</div>
     </div>
     <div class="stat">
@@ -617,8 +696,8 @@
         <div class="download-card-icon">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
         </div>
-        <div class="version-tag">v0.9 &middot; Latest</div>
-        <h3>Linux &mdash; AppImage</h3>
+        <div class="version-tag">v0.9 - Latest</div>
+        <h3>Linux - AppImage</h3>
         <p>Universal Linux build. Works on any distro. No install required, just download and run.</p>
        <a href="https://github.com/Pernoise/Rocket-client/releases/download/v0.9.0-beta/RocketClient-0.9.0-beta-x86_64.AppImage" class="download-btn">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -629,8 +708,8 @@
         <div class="download-card-icon">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
         </div>
-        <div class="version-tag">v0.9 &middot; Latest</div>
-        <h3>Windows &mdash; Installer</h3>
+        <div class="version-tag">v0.9 - Latest</div>
+        <h3>Windows - Installer</h3>
         <p>Windows build. Compatible with Windows 10 and later.</p>
         <a href="https://github.com/Pernoise/Rocket-client/releases/download/v0.9.0-beta/RocketClient-0.9.0-Setup.exe" class="download-btn">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -661,6 +740,145 @@
   </div>
 </section>
 
+<section id="faq">
+  <p class="section-label">FAQ</p>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <p class="section-sub">Everything you need to know about installing, using, and getting help with Rocket Client.</p>
+
+  <p class="faq-category">Getting Started</p>
+
+  <div class="faq-item">
+    <button class="faq-question">What is Rocket Client? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-answer">
+      <p>Rocket Client is a free Minecraft launcher built by Syndicate Software. It's designed to be lightweight and modern, focused on performance, with built-in mods so you don't have to install and manage them yourself.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Which Minecraft versions are supported? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-answer">
+      <p>Rocket Client currently supports <b>Minecraft 1.8.9 with OptiFine</b>, and that's it for now. Check the Discord for updates on future version support.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">What platforms is it available on? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-answer">
+      <p>Rocket Client is available for <b>Windows</b> (installer .exe) and <b>Linux</b> (universal AppImage, works on any distro, no install required). Grab both from the <a href="#download">download section</a>.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Is Rocket Client free? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-answer">
+      <p>Yes, Rocket Client is completely free to download and use. If you'd like to support development, optional donations are appreciated but never required, no feature is ever locked behind a paywall.</p>
+    </div>
+  </div>
+
+  <p class="faq-category">Accounts & Login</p>
+
+  <div class="faq-item">
+    <button class="faq-question">How do I log in? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-answer">
+      <p>Rocket Client supports two login methods:</p>
+      <ul>
+        <li><b>Microsoft Account</b>: sign in with the Microsoft account tied to your official, purchased copy of Minecraft.</li>
+        <li><b>Ely.by</b>: a third-party authentication service you can create a separate account with.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">What's the difference between Ely.by and a cracked account? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-answer">
+      <p>They are not the same thing. <b>Ely.by</b> is a legitimate, independent authentication service with its own account system, skins, and servers built to support it, it's a real login provider, not a way to bypass Mojang's ownership check.</p>
+      <p>A <b>"cracked" account</b>, by contrast, refers to bypassing Minecraft's official login entirely to play without owning the game. Rocket Client does not support or provide cracked/offline login, you need either a genuine Microsoft-linked Minecraft account or an Ely.by account to play.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Do I need to own Minecraft to use Rocket Client? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-answer">
+      <p>To log in with Microsoft, yes, you need a genuine copy of Minecraft. If you use Ely.by instead, you'll need an Ely.by account, which has its own separate registration and is not linked to Mojang/Microsoft ownership.</p>
+    </div>
+  </div>
+
+  <p class="faq-category">Features & Mods</p>
+
+  <div class="faq-item">
+    <button class="faq-question">What mods come built into Rocket Client? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-answer">
+      <p>Rocket Client ships with mods developed by Popcorn covering two main areas:</p>
+      <ul>
+        <li><b>Performance mods</b>: optimizations aimed at boosting FPS and reducing stutter/lag.</li>
+        <li><b>PvP mods</b>: combat-focused tweaks and quality-of-life features for competitive play.</li>
+      </ul>
+      <p>These are integrated directly into the client, so there's no separate mod installation or Forge/Fabric setup needed.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Can I install additional third-party mods? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-answer">
+      <p>Rocket Client itself isn't customizable at the client level, but you can add your own mods on top as long as they're compatible with Rocket Client's built-in mods.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Will using Rocket Client get me banned on servers? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-answer">
+      <p>No, Rocket Client will not get you banned.</p>
+    </div>
+  </div>
+
+  <p class="faq-category">Troubleshooting</p>
+
+  <div class="faq-item">
+    <button class="faq-question">Rocket Client won't launch, what do I do? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-answer">
+      <p>On Linux, make sure the AppImage has execute permissions (right-click, Properties, Permissions, or run chmod +x on it from a terminal). On Windows, make sure you ran the installer fully and that your antivirus hasn't quarantined any files.</p>
+      <p>If it still won't start, join the <a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a> and post details in the support channel.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Where do I report bugs or get support? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-answer">
+      <p>Bug reports and support requests go through <a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a>, not the business email, that inbox is for business inquiries only and isn't monitored for support.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">I found a security issue or exploit. Who do I tell? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-answer">
+      <p>Open a ticket in the <a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a> and the team will take a look.</p>
+    </div>
+  </div>
+
+  <p class="faq-category">Project & Source Code</p>
+
+  <div class="faq-item">
+    <button class="faq-question">Is Rocket Client open source? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-answer">
+      <p>Not exactly. Rocket Client is not open source, but the code is publicly viewable on the <a href="https://github.com/Pernoise/Rocket-client" target="_blank">GitHub repo</a> for transparency purposes. Check the license in the repo for details on what you can and can't do with it.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Who maintains Rocket Client? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-answer">
+      <p>Rocket Client is built and maintained by <b>Syndicate Software</b>: Pernoise (Founder & Lead Maintainer), Farlaxfard (Lead Maintainer), and Popcorn (developer of the integrated mods). See the <a href="#about">About section</a> for more.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Can I join the team or contribute? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <div class="faq-answer">
+      <p>Join the <a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a> and check if we're hiring.</p>
+    </div>
+  </div>
+</section>
+
 <section id="about">
   <p class="section-label">About</p>
   <h2 class="section-title">Who we are</h2>
@@ -675,8 +893,8 @@
 
     <h4 class="about-subheading">Our Team</h4>
     <ul class="about-team-list">
-      <li><b>Pernoise</b>: Founder and Lead Maintainer &bull; <a href="https://github.com/Pernoise" target="_blank">GitHub</a></li>
-      <li><b>Farlaxfard</b>: Lead Maintainer &bull; <a href="https://github.com/Farlaxfard" target="_blank">GitHub</a></li>
+      <li><b>Pernoise</b>: Founder and Lead Maintainer - <a href="https://github.com/Pernoise" target="_blank">GitHub</a></li>
+      <li><b>Farlaxfard</b>: Lead Maintainer - <a href="https://github.com/Farlaxfard" target="_blank">GitHub</a></li>
       <li><b>Popcorn</b>: Developer and creator of the mods integrated into Rocket Client</li>
     </ul>
 
@@ -696,20 +914,20 @@
           <div class="about-link-label">Repo</div>
           <div class="about-link-sub">Rocket-client</div>
         </div>
-        <span class="about-link-arrow">&rarr;</span>
+        <span class="about-link-arrow">></span>
       </a>
-      <a href="faq.html" class="about-link">
+      <a href="#faq" class="about-link">
         <div>
           <div class="about-link-label">FAQ</div>
           <div class="about-link-sub">Common questions</div>
         </div>
-        <span class="about-link-arrow">&rarr;</span>
+        <span class="about-link-arrow">></span>
       </a>
       <a href="https://discord.com/invite/urHfdFdsbh" target="_blank" class="about-link">
         <div>
           <div class="about-link-label">Discord</div>
         </div>
-        <span class="about-link-arrow">&rarr;</span>
+        <span class="about-link-arrow">></span>
       </a>
     </div>
   </div>
@@ -718,7 +936,7 @@
 <footer>
   <p>&copy; 2026 Rocket Client, Publicly Viewable</p>
   <div class="footer-links">
-    <a href="faq.html">FAQ</a>
+    <a href="#faq">FAQ</a>
     <a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a>
     <a href="#download">Download</a>
   </div>
