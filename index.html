@@ -36,6 +36,15 @@
     --accent: #ffffff;
     --font: 'JetBrains Mono', monospace;
     --font-display: 'Gondens', var(--font);
+    --ok: #4caf50;
+    --ok-bg: #0a1a0a;
+    --ok-border: #1a3a1a;
+    --degraded: #e0a030;
+    --degraded-bg: #1a1508;
+    --degraded-border: #3a2c10;
+    --down: #ff6b6b;
+    --down-bg: #1a0808;
+    --down-border: #3a1414;
   }
 
   html { scroll-behavior: smooth; }
@@ -575,6 +584,122 @@
   .faq-answer ul { margin: 4px 0 4px 18px; }
   .faq-answer li { font-size: 12.5px; color: var(--text-dim); line-height: 1.8; }
 
+  /* ============ STATUS SECTION ============ */
+
+  #status .section-sub { max-width: 100%; }
+
+  .status-overall {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 28px;
+    border: 0.5px solid var(--border2);
+    letter-spacing: 0.01em;
+  }
+  .status-overall.ok { background: var(--ok-bg); color: var(--ok); border-color: var(--ok-border); }
+  .status-overall.degraded { background: var(--degraded-bg); color: var(--degraded); border-color: var(--degraded-border); }
+  .status-overall.down { background: var(--down-bg); color: var(--down); border-color: var(--down-border); }
+
+  .status-services {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .status-service {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    text-align: left;
+    transition: border-color 0.2s;
+  }
+  .status-service:hover { border-color: var(--border2); }
+
+  .status-service-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .status-service-name { font-size: 13px; font-weight: 600; opacity: 0.88; }
+  .status-service-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+  .status-service-status span[id^="status-label-"] { transition: color 0.15s; }
+  .status-service-status span[id^="status-label-"].ok { color: var(--ok); }
+  .status-service-status span[id^="status-label-"].down { color: var(--down); }
+
+  .status-latency { color: var(--text-muted); font-size: 11px; }
+
+  .status-history {
+    display: flex;
+    gap: 2px;
+  }
+  .status-history .bar {
+    flex: 1;
+    height: 20px;
+    border-radius: 2px;
+    background: var(--bg3);
+  }
+  .status-history .bar.ok { background: #2d5a2d; }
+  .status-history .bar.down { background: #5a2d2d; }
+
+  .status-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-top: 0.5px solid var(--border);
+    padding-top: 12px;
+  }
+  .status-stats .stat-value {
+    color: var(--text-dim);
+    font-size: 12px;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    display: block;
+    margin-top: 4px;
+  }
+
+  .status-details {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-family: var(--font);
+    white-space: pre-wrap;
+    word-break: break-all;
+    background: #0a0a0a;
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    padding: 10px;
+    display: none;
+  }
+  .status-details.show { display: block; }
+
+  .status-toggle-details {
+    font-size: 10px;
+    color: var(--text-muted);
+    cursor: pointer;
+    text-decoration: underline;
+    align-self: flex-start;
+    letter-spacing: 0.02em;
+  }
+  .status-toggle-details:hover { color: var(--text-dim); }
+
+  .status-updated { margin-top: 24px; color: var(--text-muted); font-size: 11px; }
+
   /* ============ RESPONSIVE ============ */
 
   /* Tablet */
@@ -673,8 +798,8 @@
     <li><a href="#download">Download</a></li>
     <li><a href="#screenshots">Screenshots</a></li>
     <li><a href="#faq">FAQ</a></li>
+    <li><a href="#status">Server Status</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="https://pernoise.github.io/Rogue-status-servers/" target="_blank">Server Status</a></li>
     <li><a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a></li>
   </ul>
 </nav>
@@ -922,6 +1047,18 @@
   </div>
 </section>
 
+<section id="status">
+  <p class="section-label">Status</p>
+  <h2 class="section-title">Rogue Servers</h2>
+  <p class="section-sub">Live status of Rogue Client's backend services, checked every 30 seconds.</p>
+
+  <div id="status-overall" class="status-overall">Checking...</div>
+
+  <div class="status-services" id="status-services"></div>
+
+  <div class="status-updated" id="status-updated"></div>
+</section>
+
 <section id="about">
   <p class="section-label">About</p>
   <h2 class="section-title">Who we are</h2>
@@ -966,6 +1103,13 @@
         </div>
         <span class="about-link-arrow">></span>
       </a>
+      <a href="#status" class="about-link">
+        <div>
+          <div class="about-link-label">Server Status</div>
+          <div class="about-link-sub">Live uptime</div>
+        </div>
+        <span class="about-link-arrow">></span>
+      </a>
       <a href="https://discord.com/invite/urHfdFdsbh" target="_blank" class="about-link">
         <div>
           <div class="about-link-label">Discord</div>
@@ -980,6 +1124,7 @@
   <p>&copy; 2026 Rogue Client, Publicly Viewable</p>
   <div class="footer-links">
     <a href="#faq">FAQ</a>
+    <a href="#status">Status</a>
     <a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a>
     <a href="#download">Download</a>
   </div>
@@ -1024,6 +1169,168 @@
       navToggle.setAttribute('aria-expanded', 'false');
     });
   });
+
+  // ============ SERVER STATUS ============
+  const STATUS_SERVICES = [
+    { name: "API",           url: "https://rocket-client-api.pernoise.workers.dev/api/version", noCors: false },
+    { name: "Rogue Servers", url: "https://rogue.pernoise.workers.dev/",                          noCors: true  },
+  ];
+
+  const statusServicesEl = document.getElementById('status-services');
+  const statusOverallEl = document.getElementById('status-overall');
+  const statusUpdatedEl = document.getElementById('status-updated');
+
+  STATUS_SERVICES.forEach((s, i) => {
+    const row = document.createElement('div');
+    row.className = 'status-service';
+    row.innerHTML = `
+      <div class="status-service-top">
+        <div class="status-service-name">${s.name}</div>
+        <div class="status-service-status">
+          <span class="status-latency" id="status-latency-${i}"></span>
+          <span id="status-label-${i}">Checking...</span>
+        </div>
+      </div>
+      <div class="status-history" id="status-history-${i}"></div>
+      <div class="status-stats">
+        <div>Uptime<span class="stat-value" id="status-uptime-${i}">-</span></div>
+        <div>Min<span class="stat-value" id="status-min-${i}">-</span></div>
+        <div>Avg<span class="stat-value" id="status-avg-${i}">-</span></div>
+        <div>Max<span class="stat-value" id="status-max-${i}">-</span></div>
+      </div>
+      <div class="status-toggle-details" id="status-toggle-${i}">show raw response ▾</div>
+      <div class="status-details" id="status-details-${i}"></div>
+    `;
+    statusServicesEl.appendChild(row);
+
+    document.getElementById(`status-toggle-${i}`).addEventListener('click', () => {
+      document.getElementById(`status-details-${i}`).classList.toggle('show');
+    });
+  });
+
+  const statusHistory = STATUS_SERVICES.map(() => []); // rolling array of true/false per service
+  const statusLatencies = STATUS_SERVICES.map(() => []); // rolling array of ms per service
+  const STATUS_HISTORY_LIMIT = 30;
+
+  function renderStatusHistory(index) {
+    const el = document.getElementById(`status-history-${index}`);
+    el.innerHTML = statusHistory[index]
+      .slice(-STATUS_HISTORY_LIMIT)
+      .map(ok => `<div class="bar ${ok ? 'ok' : 'down'}"></div>`)
+      .join('');
+  }
+
+  function renderStatusStats(index) {
+    const hist = statusHistory[index];
+    const lat = statusLatencies[index];
+    if (hist.length === 0) return;
+
+    const upPct = Math.round((hist.filter(Boolean).length / hist.length) * 100);
+    document.getElementById(`status-uptime-${index}`).textContent = upPct + '%';
+
+    if (lat.length > 0) {
+      document.getElementById(`status-min-${index}`).textContent = Math.min(...lat) + 'ms';
+      document.getElementById(`status-max-${index}`).textContent = Math.max(...lat) + 'ms';
+      const avg = Math.round(lat.reduce((a, b) => a + b, 0) / lat.length);
+      document.getElementById(`status-avg-${index}`).textContent = avg + 'ms';
+    }
+  }
+
+  async function checkStatusService(service, index) {
+    const label = document.getElementById(`status-label-${index}`);
+    const latencyEl = document.getElementById(`status-latency-${index}`);
+    const detailsEl = document.getElementById(`status-details-${index}`);
+    const start = performance.now();
+
+    try {
+      const fetchOpts = { cache: 'no-store' };
+      if (service.noCors) fetchOpts.mode = 'no-cors';
+
+      const resp = await fetch(service.url, fetchOpts);
+      const ms = Math.round(performance.now() - start);
+      latencyEl.textContent = `${ms}ms`;
+      statusLatencies[index].push(ms);
+
+      if (service.noCors) {
+        // Opaque response - the request reaching the server without throwing is the
+        // only signal available cross-origin without CORS headers on their end, so
+        // that's treated as "up". Status/body genuinely can't be read from here.
+        detailsEl.textContent =
+          `Cross-origin, no CORS headers on this site - only reachability could be checked.\n` +
+          `response time: ${ms}ms`;
+
+        statusHistory[index].push(true);
+        renderStatusHistory(index);
+        renderStatusStats(index);
+        label.className = 'ok';
+        label.textContent = 'Reachable';
+        return true;
+      }
+
+      const cfRay = resp.headers.get('cf-ray') || 'n/a';
+      const server = resp.headers.get('server') || 'n/a';
+      const contentLength = resp.headers.get('content-length') || 'n/a';
+      let bodyPreview = '';
+      try {
+        const text = await resp.clone().text();
+        bodyPreview = text.length > 300 ? text.slice(0, 300) + '...' : text;
+      } catch (e) {
+        bodyPreview = '(could not read body)';
+      }
+
+      detailsEl.textContent =
+        `HTTP ${resp.status} ${resp.statusText}\n` +
+        `cf-ray: ${cfRay}\n` +
+        `server: ${server}\n` +
+        `content-length: ${contentLength}\n` +
+        `response time: ${ms}ms\n\n` +
+        bodyPreview;
+
+      const ok = resp.ok;
+      statusHistory[index].push(ok);
+      renderStatusHistory(index);
+      renderStatusStats(index);
+
+      if (ok) {
+        label.className = 'ok';
+        label.textContent = 'Operational';
+      } else {
+        label.className = 'down';
+        label.textContent = `Error (${resp.status})`;
+      }
+      return ok;
+    } catch (e) {
+      label.className = 'down';
+      label.textContent = 'Unreachable';
+      latencyEl.textContent = '';
+      detailsEl.textContent = `Request failed: ${e.message}`;
+      statusHistory[index].push(false);
+      renderStatusHistory(index);
+      renderStatusStats(index);
+      return false;
+    }
+  }
+
+  async function checkAllStatus() {
+    const results = await Promise.all(STATUS_SERVICES.map(checkStatusService));
+    const upCount = results.filter(Boolean).length;
+
+    if (upCount === results.length) {
+      statusOverallEl.className = 'status-overall ok';
+      statusOverallEl.textContent = 'All Systems Operational';
+    } else if (upCount === 0) {
+      statusOverallEl.className = 'status-overall down';
+      statusOverallEl.textContent = 'All Systems Down';
+    } else {
+      statusOverallEl.className = 'status-overall degraded';
+      statusOverallEl.textContent = 'Partial Outage';
+    }
+
+    statusUpdatedEl.textContent = 'Last checked: ' + new Date().toLocaleTimeString();
+  }
+
+  checkAllStatus();
+  setInterval(checkAllStatus, 30000); // refresh every 30s
 </script>
 </body>
 </html>
