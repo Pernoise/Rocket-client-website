@@ -8,6 +8,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  @font-face {
+    font-family: 'Gondens';
+    src: url('assets/Gondens DEMO.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
@@ -21,6 +29,7 @@
     --text-muted: #6b6b6b;
     --accent: #ffffff;
     --font: 'JetBrains Mono', monospace;
+    --font-display: 'Gondens', var(--font);
   }
 
   html { scroll-behavior: smooth; }
@@ -155,6 +164,7 @@
   .hero-badge span { width: 5px; height: 5px; border-radius: 50%; background: #fff; opacity: 0.4; }
 
   .hero h1 {
+    font-family: var(--font-display);
     font-size: clamp(42px, 7vw, 80px);
     font-weight: 700;
     letter-spacing: -0.04em;
