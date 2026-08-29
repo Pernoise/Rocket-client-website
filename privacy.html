@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Rogue Client</title>
+<style>
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('assets/JetBrainsMono-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080404;
+    --bg2: #0f0f0f;
+    --border: #1a1a1a;
+    --border2: #222222;
+    --text: #ffffff;
+    --text-dim: #9a9a9a;
+    --text-muted: #6b6b6b;
+    --font: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    min-height: 100vh;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 56px;
+    background: rgba(8,4,4,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo span {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    opacity: 0.88;
+  }
+
+  .nav-back {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 0.5px solid var(--border2);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .nav-back:hover { color: var(--text); border-color: #444; }
+
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 120px 40px 80px;
+  }
+
+  .doc-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-size: clamp(26px, 4vw, 34px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    opacity: 0.92;
+    margin-bottom: 8px;
+  }
+
+  .updated {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    opacity: 0.9;
+    margin: 36px 0 12px;
+    letter-spacing: -0.01em;
+  }
+
+  h2:first-of-type { margin-top: 0; }
+
+  p, li {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.85;
+    margin-bottom: 12px;
+  }
+
+  ul, ol { margin: 8px 0 14px 20px; }
+
+  b, strong { color: var(--text); font-weight: 600; }
+
+  a { color: var(--text-dim); border-bottom: 0.5px solid var(--border2); text-decoration: none; transition: color 0.15s; }
+  a:hover { color: var(--text); }
+
+  hr {
+    border: none;
+    border-top: 0.5px solid var(--border);
+    margin: 32px 0;
+  }
+
+  .doc-note {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.8;
+    margin-top: 36px;
+    padding-top: 20px;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .doc-crosslink {
+    display: inline-block;
+    margin-top: 32px;
+    font-size: 12px;
+  }
+
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  footer p { font-size: 11px; color: var(--text-muted); margin: 0; }
+  footer a { font-size: 11px; }
+  .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+
+  @media (max-width: 720px) {
+    nav { padding: 0 18px; height: 52px; }
+    main { padding: 92px 20px 60px; }
+    footer { flex-direction: column; align-items: flex-start; padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/icon.png" alt="Rogue Client" width="20" height="20">
+    <span>Rogue Client</span>
+  </a>
+  <a href="index.html" class="nav-back">&larr; Back to site</a>
+</nav>
+
+<main>
+  <p class="doc-label">Legal</p>
+  <h1>Rogue Client Privacy Policy</h1>
+  <p class="updated">Last updated: [DATE]</p>
+
+  <p>This Privacy Policy explains what happens to your data when you use Rogue Client (the "Software"), developed by Pernoise ("we," "us," "our"). It should be read alongside our <a href="terms.html">Terms of Service</a>. By using Rogue Client, you agree to the practices described here.</p>
+
+  <hr>
+
+  <h2>1. Our Approach</h2>
+  <p>Rogue Client is built to collect as little as possible. We don't run analytics, telemetry, or tracking of any kind, and we don't use third-party services (like Google Analytics, Sentry, or similar tools) to monitor how you use the Software. There's no hidden data pipeline — what's described below is the whole picture.</p>
+
+  <h2>2. What Is Stored, and Where</h2>
+  <p>The only data Rogue Client handles is what's needed to keep you signed in:</p>
+  <ul>
+    <li><b>Session/authentication data.</b> When you log in with Microsoft or Ely.by, Rogue Client caches the resulting session tokens locally on your own device so you don't have to log in every time you open the launcher.</li>
+    <li><b>Local only.</b> This data is stored on your device, not on any server we operate. We do not have our own backend that receives, stores, or has visibility into your login credentials, tokens, or account activity.</li>
+    <li><b>Your responsibility.</b> Because this data lives on your device, keeping your device secure is what keeps this data secure. If you share your device or computer, be aware that cached sessions could allow someone else to access your account.</li>
+  </ul>
+  <p>We do not collect your Minecraft chat logs, personal files, IP address, device identifiers, or usage statistics.</p>
+
+  <h2>3. Third-Party Services</h2>
+  <p>Rogue Client connects out to a small number of third-party services in order to function. Each of these has its own privacy policy, which governs any data they receive directly from your use of their service:</p>
+  <ul>
+    <li><b>Microsoft</b> — for account authentication, when you choose to log in with a Microsoft account.</li>
+    <li><b>Ely.by</b> — for account authentication, when you choose to log in with an Ely.by account.</li>
+    <li><b>Mojang's official APIs</b> — for retrieving Minecraft version and asset data.</li>
+    <li><b>Modloader installers</b> (e.g. Fabric, Forge) — for installing mod loaders you request.</li>
+    <li><b>Discord</b> — if Rich Presence is enabled, to display your current activity to your Discord friends.</li>
+  </ul>
+  <p>We don't control what these services do with data once it's in their hands. We'd encourage you to review their respective privacy policies if you have concerns.</p>
+
+  <h2>4. Crash Reporting</h2>
+  <p>If crash reporting is enabled in Settings, diagnostic information (such as stack traces, launcher version, and basic system information) may be generated to help us understand what went wrong. This is intentionally limited: we do not collect Minecraft account credentials, chat logs, or personal files as part of this process. You can review exactly what would be included via the Software's built-in log viewer before anything is shared, and crash reporting can be turned off entirely in Settings.</p>
+
+  <h2>5. Children's Privacy</h2>
+  <p>Rogue Client is not knowingly used to collect personal data from children, largely because we don't collect personal data from anyone. Our Terms of Service already require users to meet the minimum age of digital consent in their jurisdiction, or to have parental permission if they don't.</p>
+
+  <h2>6. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy as the Software changes. Continued use of Rogue Client after an update is published constitutes acceptance of the revised policy. Material changes will be noted with an updated "Last updated" date above.</p>
+
+  <h2>7. Contact</h2>
+  <p>Questions about this Privacy Policy can be directed through the official Rogue Client Discord:</p>
+  <p><a href="https://discord.com/invite/urHfdFdsbh" target="_blank">discord.com/invite/urHfdFdsbh</a></p>
+
+  <p class="doc-note">This document is provided for the purpose of informing users of Rogue Client and is not a substitute for independent legal advice. Pernoise is encouraged to have this Privacy Policy reviewed by a qualified attorney before relying on it as a binding legal document.</p>
+
+  <a class="doc-crosslink" href="terms.html">See also: Terms of Service &rarr;</a>
+</main>
+
+<footer>
+  <p>&copy; 2026 Rogue Client, Publicly Viewable</p>
+  <div class="footer-links">
+    <a href="index.html#faq">FAQ</a>
+    <a href="index.html#status">Status</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a>
+  </div>
+</footer>
+
+</body>
+</html>

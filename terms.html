@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — Rogue Client</title>
+<style>
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('assets/JetBrainsMono-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080404;
+    --bg2: #0f0f0f;
+    --border: #1a1a1a;
+    --border2: #222222;
+    --text: #ffffff;
+    --text-dim: #9a9a9a;
+    --text-muted: #6b6b6b;
+    --font: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    min-height: 100vh;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 56px;
+    background: rgba(8,4,4,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo span {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    opacity: 0.88;
+  }
+
+  .nav-back {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 0.5px solid var(--border2);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .nav-back:hover { color: var(--text); border-color: #444; }
+
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 120px 40px 80px;
+  }
+
+  .doc-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-size: clamp(26px, 4vw, 34px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    opacity: 0.92;
+    margin-bottom: 8px;
+  }
+
+  .updated {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    opacity: 0.9;
+    margin: 36px 0 12px;
+    letter-spacing: -0.01em;
+  }
+
+  h2:first-of-type { margin-top: 0; }
+
+  p, li {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.85;
+    margin-bottom: 12px;
+  }
+
+  ul, ol { margin: 8px 0 14px 20px; }
+
+  b, strong { color: var(--text); font-weight: 600; }
+
+  a { color: var(--text-dim); border-bottom: 0.5px solid var(--border2); text-decoration: none; transition: color 0.15s; }
+  a:hover { color: var(--text); }
+
+  hr {
+    border: none;
+    border-top: 0.5px solid var(--border);
+    margin: 32px 0;
+  }
+
+  .doc-note {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.8;
+    margin-top: 36px;
+    padding-top: 20px;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .doc-crosslink {
+    display: inline-block;
+    margin-top: 32px;
+    font-size: 12px;
+  }
+
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  footer p { font-size: 11px; color: var(--text-muted); margin: 0; }
+  footer a { font-size: 11px; }
+  .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+
+  @media (max-width: 720px) {
+    nav { padding: 0 18px; height: 52px; }
+    main { padding: 92px 20px 60px; }
+    footer { flex-direction: column; align-items: flex-start; padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/icon.png" alt="Rogue Client" width="20" height="20">
+    <span>Rogue Client</span>
+  </a>
+  <a href="index.html" class="nav-back">&larr; Back to site</a>
+</nav>
+
+<main>
+  <p class="doc-label">Legal</p>
+  <h1>Rogue Client Terms of Service</h1>
+  <p class="updated">Last updated: [DATE]</p>
+
+  <p>These Terms of Service ("Terms") govern your download, installation, and use of Rogue Client (the "Software"), developed and owned by Pernoise ("we," "us," "our"). By downloading, installing, or using Rogue Client, you agree to these Terms. If you do not agree, do not use the Software.</p>
+
+  <p>This document covers your rights and obligations as an <b>end user</b> of the compiled application. It is separate from, and in addition to, the <code>LICENSE</code> file, which governs the source code itself.</p>
+
+  <hr>
+
+  <h2>1. Acceptance of Terms</h2>
+  <p>By using Rogue Client, you confirm that:</p>
+  <ul>
+    <li>You are at least 13 years old, or the minimum age of digital consent in your country, whichever is higher.</li>
+    <li>If you are under the age of majority in your jurisdiction, you have your parent or guardian's permission to use the Software.</li>
+    <li>You have the legal capacity to enter into these Terms.</li>
+  </ul>
+
+  <h2>2. What Rogue Client Is</h2>
+  <p>Rogue Client is a third-party Minecraft launcher. It is <b>not affiliated with, endorsed by, or sponsored by Mojang Studios, Microsoft, or their affiliates</b>. "Minecraft" is a trademark of Mojang Studios. Your use of Minecraft through Rogue Client remains subject to Mojang's own End User License Agreement and Minecraft Usage Guidelines, which you are responsible for reviewing and complying with independently.</p>
+  <p>You must own a legitimate, valid Minecraft account to use Rogue Client's Minecraft-launching features. Rogue Client does not provide, sell, or grant access to Minecraft itself.</p>
+
+  <h2>3. Account Authentication</h2>
+  <p>Rogue Client supports sign-in via Microsoft and Ely.by accounts.</p>
+  <ul>
+    <li>Authentication with these services is handled through their respective official APIs. We do not store your account password.</li>
+    <li>Any session tokens or credentials cached locally by Rogue Client for the purpose of keeping you signed in are stored on your own device and are your responsibility to protect.</li>
+    <li>Your use of Microsoft or Ely.by authentication is also governed by those providers' own terms of service and privacy policies, which we do not control.</li>
+    <li>We are not responsible for account suspensions, bans, or access issues arising from your use of third-party authentication services.</li>
+  </ul>
+
+  <h2>4. Acceptable Use</h2>
+  <p>You agree not to:</p>
+  <ul>
+    <li>Use Rogue Client to violate Mojang's Minecraft EULA or Usage Guidelines.</li>
+    <li>Use Rogue Client to access, distribute, or promote cheats, exploits, or unauthorized modifications that violate the terms of service of any Minecraft server or service you connect to.</li>
+    <li>Attempt to reverse engineer, decompile, or extract the source code of Rogue Client, except as separately permitted in writing by Pernoise.</li>
+    <li>Use Rogue Client for any unlawful purpose, or in a way that could harm, disable, or impair the Software or the experience of other users.</li>
+    <li>Misrepresent your affiliation with Pernoise or Rogue Client, including impersonating official support channels.</li>
+  </ul>
+
+  <h2>5. Third-Party Services</h2>
+  <p>Rogue Client integrates with, or connects to, third-party services including but not limited to:</p>
+  <ul>
+    <li>Microsoft authentication</li>
+    <li>Ely.by authentication</li>
+    <li>Discord Rich Presence</li>
+    <li>Minecraft version and asset distribution services (e.g. Mojang's official APIs)</li>
+    <li>Modloader installers (e.g. Fabric, Forge)</li>
+  </ul>
+  <p>We are not responsible for the availability, security, content, or practices of these third-party services. Your use of them is subject to their own terms and policies.</p>
+
+  <h2>6. Automatic Updates</h2>
+  <p>Rogue Client may check for and install updates automatically to deliver new features, fixes, and security improvements. By using the Software, you consent to this update process. You may be able to disable automatic updates in Settings, but doing so may leave you on an outdated, unsupported version.</p>
+
+  <h2>7. Crash Reporting & Logs</h2>
+  <p>If crash reporting is enabled, diagnostic information (such as stack traces, launcher version, and system information) may be collected to help us identify and fix issues. We do not intentionally collect Minecraft account credentials, chat logs, or personal files as part of this process. You can review what is collected via the Software's built-in log viewer.</p>
+
+  <h2>8. Intellectual Property</h2>
+  <p>Rogue Client's name, logo, interface design, and all associated branding are the exclusive property of Pernoise. Nothing in these Terms grants you any right to use Pernoise's trademarks, branding, or assets except as necessary to use the Software as intended.</p>
+  <p>Minecraft and all related trademarks are the property of Mojang Studios / Microsoft. Rogue Client claims no ownership over Minecraft or its assets.</p>
+
+  <h2>9. Disclaimer of Warranty</h2>
+  <p>Rogue Client is provided <b>"as is" and "as available,"</b> without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement. We do not guarantee that the Software will be uninterrupted, error-free, or free of harmful components.</p>
+  <p>You use Rogue Client at your own risk, including any risk to your Minecraft account arising from the use of third-party authentication or unofficial launcher software in general.</p>
+
+  <h2>10. Limitation of Liability</h2>
+  <p>To the fullest extent permitted by law, Pernoise shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of data, loss of account access, or loss of profits, arising from your use of or inability to use Rogue Client, even if advised of the possibility of such damages.</p>
+
+  <h2>11. Termination</h2>
+  <p>We reserve the right to discontinue, restrict, or terminate your access to Rogue Client at any time, for any reason, including violation of these Terms, without prior notice.</p>
+
+  <h2>12. Changes to These Terms</h2>
+  <p>We may update these Terms from time to time. Continued use of Rogue Client after changes are published constitutes acceptance of the revised Terms. Material changes will be noted with an updated "Last updated" date above.</p>
+
+  <h2>13. Contact</h2>
+  <p>Questions about these Terms, or requests for permission covered under the <code>LICENSE</code> file, can be directed through the official Rogue Client Discord:</p>
+  <p><a href="https://discord.com/invite/urHfdFdsbh" target="_blank">discord.com/invite/urHfdFdsbh</a></p>
+
+  <p class="doc-note">This document is provided for the purpose of informing users of Rogue Client and is not a substitute for independent legal advice. Pernoise is encouraged to have these Terms reviewed by a qualified attorney before relying on them as a binding legal agreement.</p>
+
+  <a class="doc-crosslink" href="privacy.html">See also: Privacy Policy &rarr;</a>
+</main>
+
+<footer>
+  <p>&copy; 2026 Rogue Client, Publicly Viewable</p>
+  <div class="footer-links">
+    <a href="index.html#faq">FAQ</a>
+    <a href="index.html#status">Status</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a>
+  </div>
+</footer>
+
+</body>
+</html>

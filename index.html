@@ -499,7 +499,7 @@
 
   footer a:hover { color: var(--text); }
 
-  .footer-links { display: flex; gap: 20px; }
+  .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
 
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
@@ -810,6 +810,7 @@
   <p>A modern, lightweight Minecraft launcher built with love and... Hatred.</p>
   <div class="hero-btns">
     <a href="#download" class="btn-primary">Download</a>
+    <a href="terms.html" class="btn-secondary">Terms & Privacy</a>
   </div>
   <div class="hero-stats">
     <div class="stat">
@@ -1116,6 +1117,20 @@
         </div>
         <span class="about-link-arrow">></span>
       </a>
+      <a href="terms.html" class="about-link">
+        <div>
+          <div class="about-link-label">Terms of Service</div>
+          <div class="about-link-sub">End-user terms</div>
+        </div>
+        <span class="about-link-arrow">></span>
+      </a>
+      <a href="privacy.html" class="about-link">
+        <div>
+          <div class="about-link-label">Privacy Policy</div>
+          <div class="about-link-sub">What we collect (nothing much)</div>
+        </div>
+        <span class="about-link-arrow">></span>
+      </a>
     </div>
   </div>
 </section>
@@ -1125,6 +1140,8 @@
   <div class="footer-links">
     <a href="#faq">FAQ</a>
     <a href="#status">Status</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="privacy.html">Privacy Policy</a>
     <a href="https://discord.com/invite/urHfdFdsbh" target="_blank">Discord</a>
     <a href="#download">Download</a>
   </div>
@@ -1252,9 +1269,6 @@
       statusLatencies[index].push(ms);
 
       if (service.noCors) {
-        // Opaque response - the request reaching the server without throwing is the
-        // only signal available cross-origin without CORS headers on their end, so
-        // that's treated as "up". Status/body genuinely can't be read from here.
         detailsEl.textContent =
           `Cross-origin, no CORS headers on this site - only reachability could be checked.\n` +
           `response time: ${ms}ms`;
